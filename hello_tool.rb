@@ -3,7 +3,7 @@ require "model_context_protocol"
 class HelloTool < ModelContextProtocol::Server::Tool
   with_metadata do
     {
-      name: "HelloTool",
+      name: "hello_tool",
       description: "A simple tool that returns HELLO",
       inputSchema: {
         type: "object",
