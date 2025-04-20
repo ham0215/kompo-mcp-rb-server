@@ -2,7 +2,6 @@
 require "model_context_protocol"
 require_relative "hello_prompt"
 require_relative "hello_resource"
-require_relative "hello_resource_template"
 require_relative "hello_tool"
 
 # Create a new MCP server instance
@@ -18,9 +17,6 @@ server = ModelContextProtocol::Server.new do |config|
     end
     resources list_changed: true, subscribe: true do
       register HelloResource
-    end
-    resource_templates do
-      register HelloResourceTemplate
     end
     tools list_changed: true do
       register HelloTool

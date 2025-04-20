@@ -4,15 +4,14 @@ class HelloPrompt < ModelContextProtocol::Server::Prompt
   with_metadata do
     {
       name: "hello_prompt",
-      description: "A prompt that generates a greeting message"
-    }
-  end
-
-  with_argument do
-    {
-      name: "name",
-      description: "The name of the person to greet",
-      required: true
+      description: "A prompt that generates a greeting message",
+      arguments: [
+        {
+          name: "name",
+          description: "The name of the person to greet",
+          required: true
+        }
+      ]
     }
   end
 
