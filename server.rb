@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require "model-context-protocol-rb"
+require "model_context_protocol"
 require_relative "hello_resource"
 
 # Create a new MCP server instance

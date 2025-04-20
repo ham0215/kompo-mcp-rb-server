@@ -1,4 +1,4 @@
-require "model-context-protocol-rb"
+require "model_context_protocol"
 
 class HelloResource < ModelContextProtocol::Server::Resource
   with_metadata do
