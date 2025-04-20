@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 require "model_context_protocol"
 require_relative "hello_prompt"
 require_relative "hello_resource"
@@ -24,5 +25,4 @@ server = ModelContextProtocol::Server.new do |config|
   end
 end
 
-puts "Starting Hello MCP server..."
 server.start
