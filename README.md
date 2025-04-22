@@ -39,19 +39,20 @@ docker build --no-cache -t kompo-mcp-rb-server .
 docker run -it --rm -v .:/app kompo-mcp-rb-server bash
 
 # build kompo-vfs
-cd kompo-vfs
-rm -rf target
-cargo build --release
-cd ..
+# cd kompo-vfs
+# rm -rf target
+# cargo build --release
+# cd ..
 
 # install kompo
 cd kompo
 gem build kompo.gemspec
 cd ../
-gem install kompo/kompo.gem
+gem install kompo/kompo-0.2.0.gem
 
 # run kompo
-kompo -e server.rb -o hello-mcp-server
+# kompo -e server.rb -o hello-mcp-server
+kompo -e server.rb --local-kompo-fs-dir=kompo-vfs
 ```
 
 
