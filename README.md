@@ -70,6 +70,7 @@ docker run -it --rm -v .:/app kompo-mcp-rb-server bash
 cd kompo-vfs
 rm -rf target
 cargo build --release
+cd ..
 
 # run kompo
 kompo -e server.rb -o hello-mcp-server
