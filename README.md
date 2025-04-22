@@ -33,6 +33,12 @@ cd kompo-vfs
 cargo build --release
 ```
 
+```
+# targetディレクトリをコピー
+cp -r target/release /Users/naoto.hamada/github/ham/kompo-vfs
+```
+
+
 ## run kompo
 
 error
@@ -54,6 +60,19 @@ bundle install
 
 # run kompo
 KOMPO_CLI=/Users/naoto.hamada/github/ham/kompo-vfs/target/release/kompo-cli LIB_KOMPO_DIR=/Users/naoto.hamada/github/ham/kompo-vfs/target/release kompo -e server.rb -o hello-mcp-server
+```
+
+# docker
+```
+docker run -it --rm -v .:/app kompo-mcp-rb-server bash
+
+# build kompo-vfs
+cd kompo-vfs
+rm -rf target
+cargo build --release
+
+# run kompo
+kompo -e server.rb -o hello-mcp-server
 ```
 
 
