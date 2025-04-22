@@ -16,7 +16,7 @@
 }
 ```
 
-## development
+### development
 
 https://github.com/modelcontextprotocol/inspector
 
@@ -24,46 +24,18 @@ https://github.com/modelcontextprotocol/inspector
 npx @modelcontextprotocol/inspector start.sh
 ```
 
-## kompo-vfs
+## kompo
+
+### install kompo in local repository
 
 ```
-# build
-git clone https://github.com/ahogappa/kompo-vfs.git
-cd kompo-vfs
-cargo build --release
+gem install
 ```
 
-```
-# targetディレクトリをコピー
-cp -r target/release /Users/naoto.hamada/github/ham/kompo-vfs
-```
+### run kompo
 
-
-## run kompo
-
-error
 ```
-ld: library 'ssl' not found
-clang: error: linker command failed with exit code 1 (use -v to see invocation)
-make[2]: *** [exe/ruby] Error 1
-make[1]: *** [ruby] Error 2
-make: *** [build-ext] Error 2
-/Users/naoto.hamada/.local/share/mise/installs/ruby/3.4.3/lib/ruby/gems/3.4.0/gems/kompo-0.2.0/lib/kompo.rb:292:in 'Kernel#system': Command failed with exit 2: make (RuntimeError)
-```
-
-Rubyをインストールし直す
-```
-# install ruby use mise
-mise uninstall ruby 3.4.3
-RUBY_CONFIGURE_OPTS="--enable-static --with-openssl-dir=$(brew --prefix openssl@3)" mise install ruby 3.4.3
-bundle install
-
-# run kompo
-KOMPO_CLI=/Users/naoto.hamada/github/ham/kompo-vfs/target/release/kompo-cli LIB_KOMPO_DIR=/Users/naoto.hamada/github/ham/kompo-vfs/target/release kompo -e server.rb -o hello-mcp-server
-```
-
-# docker
-```
+docker build --no-cache -t kompo-mcp-rb-server .
 docker run -it --rm -v .:/app kompo-mcp-rb-server bash
 
 # build kompo-vfs
@@ -71,6 +43,12 @@ cd kompo-vfs
 rm -rf target
 cargo build --release
 cd ..
+
+# install kompo
+cd kompo
+gem build kompo.gemspec
+cd ../
+gem install kompo/kompo.gem
 
 # run kompo
 kompo -e server.rb -o hello-mcp-server
