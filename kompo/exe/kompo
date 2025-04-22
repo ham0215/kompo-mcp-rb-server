@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/kompo'
+
+
+option = Kompo::Option.default
+Kompo::Packing.exec(option.to_context)
+
+puts 'info: Finish kompo!'
