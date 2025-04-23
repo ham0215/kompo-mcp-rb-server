@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 # Script to run the Ruby server
 
 # Navigate to the directory containing the script
