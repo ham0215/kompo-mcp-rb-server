@@ -23,6 +23,8 @@ Gem::Specification.new do |spec|
   spec.files = Dir.chdir(__dir__) do
     `git ls-files -z`.split("\x0").reject do |f|
       (File.expand_path(f) == __FILE__) || f.start_with?(*%w[bin/ test/ spec/ features/ .git .circleci appveyor sample])
+      f.end_with?('.gem') ||  # 追加: ファイル名の末尾が .gem のものを除外 (ビルド成果物)
+      f.start_with?('pkg/')   # 追加: pkg/ ディレクトリ以下を除外 (ビルド成果物の置き場になりうる)
     end
   end
   spec.bindir = "exe"

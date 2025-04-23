@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'mcp'
 
 name "hello-world"

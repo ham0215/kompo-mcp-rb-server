@@ -30,7 +30,10 @@ COPY . /app/
 RUN gem install bundler \
   && bundle install
 
-CMD ["bash", "-c", "./start.sh"]
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+
+# CMD ["bash", "-c", "./start.sh"]
 # CMD ["bash", "-c", "./start2.sh"]
 # CMD ["./app"]
-# CMD ["tail", "-f", "/dev/null"]
+CMD ["tail", "-f", "/dev/null"]
