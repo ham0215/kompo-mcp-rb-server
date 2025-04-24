@@ -12,4 +12,5 @@ sample.db
 samples/hello/hello
 samples/sinatra_and_sqlite/sinatra_and_sqlite
 
-kompo-vfs/
+app
+kompo/*.gem

@@ -30,9 +30,6 @@ COPY . /app/
 RUN gem install bundler \
   && bundle install
 
-# Set environment variables
-ENV KOMPO_CLI=/app/kompo-vfs/target/release/kompo-cli
-ENV LIB_KOMPO_DIR=/app/kompo-vfs/target/release
 ENV LANG=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 
