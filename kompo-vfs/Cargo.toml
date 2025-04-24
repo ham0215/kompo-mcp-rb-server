@@ -1,0 +1,4 @@
+[workspace]
+
+members = ["kompo_fs", "kompo_storage", "kompo_wrap"]
+resolver = "2"
