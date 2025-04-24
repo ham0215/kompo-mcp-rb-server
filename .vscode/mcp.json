@@ -1,9 +1,13 @@
 {
   "servers": {
     "hello": {
-      "type": "stdio",
-      "command": "/Users/naoto.hamada/github/ham/kompo-mcp-rb-server/start.sh",
-      "args": []
-    }
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "kompo-mcp-rb-server"
+      ]
+    },
   }
 }

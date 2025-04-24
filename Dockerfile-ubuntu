@@ -1,0 +1,9 @@
+FROM ubuntu:latest
+
+# Set working directory
+WORKDIR /app
+
+# Copy project files
+COPY . /app/
+
+CMD ["tail", "-f", "/dev/null"]

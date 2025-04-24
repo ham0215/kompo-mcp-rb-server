@@ -1,0 +1,16 @@
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+.DS_Store
+kompo-fs
+sample.db
+samples/hello/hello
+samples/sinatra_and_sqlite/sinatra_and_sqlite
+
+app
+*.gem

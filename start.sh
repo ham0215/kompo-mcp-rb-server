@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 # Script to run the Ruby server
 
 # Navigate to the directory containing the script
@@ -10,6 +10,4 @@ bundle install
 
 # Run the Ruby server
 echo "Starting Ruby server..."
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-ruby -E utf-8 server.rb
+ruby server.rb

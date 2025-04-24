@@ -1,107 +1,51 @@
 #!/usr/bin/env ruby
 
-require "model_context_protocol"
+require 'mcp'
 
-# HelloPrompt definition
-class HelloPrompt < ModelContextProtocol::Server::Prompt
-  with_metadata do
-    {
-      name: "hello_prompt",
-      description: "A prompt that generates a greeting message",
-      arguments: [
-        {
-          name: "name",
-          description: "The name of the person to greet",
-          required: true
-        }
-      ]
-    }
-  end
+name "hello-world"
 
-  def call
-    name = params["name"]
+version "1.0.0"
 
-    greeting_text = "こんにちは、#{name}さん！お元気ですか？"
+# Define a resource
+resource "hello://world" do
+  name "Hello World"
+  description "A simple hello world message"
+  call { "Hello, World!" }
+end
 
-    messages = [
-      {
-        role: "user",
-        content: {
-          type: "text",
-          text: "Please greet me."
-        }
-      },
-      {
-        role: "assistant",
-        content: {
-          type: "text",
-          text: greeting_text
-        }
-      }
-    ]
+# Define a resource template
+resource_template "hello://{user_name}" do
+  name "Hello User"
+  description "A simple hello user message"
+  call { |args| "Hello, #{args[:user_name]}!" }
+end
 
-    respond_with messages: messages
+# Define a tool
+tool "greet" do
+  description "Greet someone by name"
+  argument :name, String, required: true, description: "Name to greet"
+  call do |args|
+    "Hello, #{args[:name]}!"
   end
 end
 
-# HelloResource definition
-class HelloResource < ModelContextProtocol::Server::Resource
-  with_metadata do
-    {
-      name: "hello_resource",
-      description: "A simple resource that returns HELLO",
-      mime_type: "text/plain",
-      uri: "resource://hello-resource"
-    }
+# Define a tool with nested arguments
+tool "greet_full_name" do
+  description "Greet someone by their full name"
+  argument :person, required: true, description: "Person to greet" do
+    argument :first_name, String, required: false, description: "First name"
+    argument :last_name, String, required: false, description: "Last name"
   end
-
-  def call
-    respond_with :text, text: "HELLO"
+  call do |args|
+    "Hello, First: #{args[:person][:first_name]} Last: #{args[:person][:last_name]}!"
   end
 end
 
-# HelloTool definition
-class HelloTool < ModelContextProtocol::Server::Tool
-  with_metadata do
-    {
-      name: "hello_tool",
-      description: "A simple tool that returns HELLO",
-      inputSchema: {
-        type: "object",
-        properties: {
-          name: {
-            type: "string",
-            description: "Optional name to greet (defaults to World)"
-          }
-        }
-      }
-    }
-  end
-
-  def call
-    name = params["name"] || "World"
-    respond_with :text, text: "HELLO #{name}"
+# Define a tool with an Array argument
+tool "group_greeting" do
+  description "Greet multiple people at once"
+  argument :people, Array, required: true, items: String, description: "People to greet"
+  call do |args|
+    args[:people].map { |person| "Hello, #{person}!" }.join(", ")
   end
 end
-
-# Create a new MCP server instance
-server = ModelContextProtocol::Server.new do |config|
-  config.name = "Hello MCP Server"
-  config.version = "1.0.0"
-  config.enable_log = true
-
-  # Register our components
-  config.registry = ModelContextProtocol::Server::Registry.new do
-    prompts list_changed: true do
-      register HelloPrompt
-    end
-    resources list_changed: true, subscribe: true do
-      register HelloResource
-    end
-    tools list_changed: true do
-      register HelloTool
-    end
-  end
-end
-
-server.start
