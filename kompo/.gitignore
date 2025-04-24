@@ -13,4 +13,4 @@ samples/hello/hello
 samples/sinatra_and_sqlite/sinatra_and_sqlite
 
 app
-kompo/*.gem
+*.gem
