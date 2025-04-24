@@ -1,0 +1,33 @@
+Started GET "/" for 127.0.0.1 at 2025-04-24 13:09:26 +0900
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/naoto.hamada/.local/share/mise/installs/ruby/3.4.3/lib/ruby/gems/3.4.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/naoto.hamada/.local/share/mise/installs/ruby/3.4.3/lib/ruby/gems/3.4.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.4ms | Allocations: 341)
+Completed 200 OK in 83ms (Views: 17.9ms | ActiveRecord: 0.0ms | Allocations: 7467)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-24 13:09:39 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/naoto.hamada/.local/share/mise/installs/ruby/3.4.3/lib/ruby/gems/3.4.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/naoto.hamada/.local/share/mise/installs/ruby/3.4.3/lib/ruby/gems/3.4.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.0ms | Allocations: 13)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 194)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-24 13:21:53 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/naoto.hamada/.local/share/mise/installs/ruby/3.4.3/lib/ruby/gems/3.4.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/naoto.hamada/.local/share/mise/installs/ruby/3.4.3/lib/ruby/gems/3.4.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.4ms | Allocations: 341)
+Completed 200 OK in 10ms (Views: 4.0ms | ActiveRecord: 0.0ms | Allocations: 4412)
+
+
+Started GET "/" for 127.0.0.1 at 2025-04-24 13:41:16 +0900
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/naoto.hamada/.local/share/mise/installs/ruby/3.4.3/lib/ruby/gems/3.4.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/naoto.hamada/.local/share/mise/installs/ruby/3.4.3/lib/ruby/gems/3.4.0/gems/railties-7.1.5.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.7ms | Allocations: 342)
+Completed 200 OK in 165ms (Views: 35.5ms | ActiveRecord: 0.0ms | Allocations: 4395)
+
+

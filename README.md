@@ -56,7 +56,8 @@ gem install kompo/kompo-0.2.0.gem
 
 # run kompo
 # kompo -e server.rb -o hello-mcp-server
-kompo -e hello.rb --local-kompo-fs-dir=kompo-vfs
+kompo -e server.rb --local-kompo-fs-dir=kompo-vfs
+kompo -e server.rb --dest-dir=tmp --local-kompo-fs-dir=../kompo-vfs
 ```
 
 # run app

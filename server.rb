@@ -1,51 +1,37 @@
 #!/usr/bin/env ruby
 
-require 'mcp'
+# Script to start Rails server in the myapp directory using Rack::Handler::Puma
+# Usage: ruby server.rb
 
-name "hello-world"
+require 'fileutils'
+require 'rack'
+require 'rack/handler/puma'
 
-version "1.0.0"
+# Get the absolute path to the myapp directory
+myapp_dir = File.expand_path(File.join(File.dirname(__FILE__), 'myapp'))
 
-# Define a resource
-resource "hello://world" do
-  name "Hello World"
-  description "A simple hello world message"
-  call { "Hello, World!" }
+# Check if the myapp directory exists
+unless Dir.exist?(myapp_dir)
+  puts "Error: myapp directory not found at #{myapp_dir}"
+  exit 1
 end
 
-# Define a resource template
-resource_template "hello://{user_name}" do
-  name "Hello User"
-  description "A simple hello user message"
-  call { |args| "Hello, #{args[:user_name]}!" }
-end
+puts "Starting Rails server in #{myapp_dir}..."
 
-# Define a tool
-tool "greet" do
-  description "Greet someone by name"
-  argument :name, String, required: true, description: "Name to greet"
-  call do |args|
-    "Hello, #{args[:name]}!"
-  end
-end
+# Change to the myapp directory and start the Rails server
+Dir.chdir(myapp_dir) do
+  # Load Rails environment
+  require File.join(myapp_dir, 'config', 'environment')
 
-# Define a tool with nested arguments
-tool "greet_full_name" do
-  description "Greet someone by their full name"
-  argument :person, required: true, description: "Person to greet" do
-    argument :first_name, String, required: false, description: "First name"
-    argument :last_name, String, required: false, description: "Last name"
-  end
-  call do |args|
-    "Hello, First: #{args[:person][:first_name]} Last: #{args[:person][:last_name]}!"
-  end
-end
+  # Set server options (similar to default Rails server settings)
+  options = {
+    Port: 3000,
+    Host: '0.0.0.0',
+    Silent: false,
+    Threads: '0:16'
+  }
 
-# Define a tool with an Array argument
-tool "group_greeting" do
-  description "Greet multiple people at once"
-  argument :people, Array, required: true, items: String, description: "People to greet"
-  call do |args|
-    args[:people].map { |person| "Hello, #{person}!" }.join(", ")
-  end
+  # Start the Rails server using Rack::Handler::Puma
+  # Pass options as a parameter to the run method
+  Rack::Handler::Puma.run(Rails.application, **options)
 end
